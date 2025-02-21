@@ -80,3 +80,33 @@ h1 {
 .container strong {
     color: #007bff;
 }
+ /* Styling untuk form komentar */
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Styling untuk daftar komentar */
+.komentar-list {
+    margin-top: 20px;
+}
+
+.komentar-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.komentar-item p {
+    margin: 5px 0;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
