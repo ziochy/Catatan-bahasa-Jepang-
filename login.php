@@ -1,24 +1,30 @@
 <?php
-session_start();
+session_start(); // Mulai sesi
+
+// Cek apakah form login sudah di-submit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Baca data dari file (contoh sederhana)
+    // Baca data pengguna dari file (contoh sederhana)
     $file = file("users.txt");
     $login_success = false;
 
+    // Loop untuk memeriksa setiap baris di file
     foreach ($file as $line) {
         list($stored_username, $stored_password) = explode(":", trim($line));
+        
+        // Cek apakah username dan password cocok
         if ($username == $stored_username && password_verify($password, $stored_password)) {
             $login_success = true;
             break;
         }
     }
 
+    // Jika login berhasil
     if ($login_success) {
-        $_SESSION['username'] = $username;
-        header("Location: dashboard.php");
+        $_SESSION['username'] = $username; // Simpan username di sesi
+        header("Location: dashboard.php"); // Redirect ke dashboard
         exit();
     } else {
         echo "<script>alert('Username atau password salah!');</script>";
@@ -40,8 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="login.php" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
+            
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+            
             <button type="submit" class="btn">Login</button>
         </form>
         <p>Belum punya akun? <a href="register.php">Daftar di sini</a>.</p>
