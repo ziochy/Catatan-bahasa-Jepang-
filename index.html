@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luzuno - Selamat Datang</title>
+    <title>Luzuno - Belajar Bahasa Jepang</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Cek apakah pengguna sudah login
+        function checkLogin() {
+            fetch('check_login.php') // Buat file check_login.php untuk memeriksa sesi
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        window.location.href = 'dashboard.php'; // Redirect ke dashboard jika sudah login
+                    }
+                });
+        }
+
+        // Jalankan fungsi checkLogin saat halaman dimuat
+        window.onload = checkLogin;
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Selamat Datang di Luzuno</h1>
-        <p>Website untuk mengelola tugas dan proyek Anda.</p>
+        <p>Platform belajar bahasa Jepang online.</p>
         <div class="buttons">
-            <a href="register.php" class="btn">Daftar</a>
             <a href="login.php" class="btn">Login</a>
+            <a href="register.php" class="btn">Daftar</a>
         </div>
     </div>
 </body>
